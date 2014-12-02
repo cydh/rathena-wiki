@@ -1,0 +1,135 @@
+= Things You Will Need =
+* [http://code.google.com/p/tortoisegit/ TortoiseGIT]
+* [http://www.mysql.com/downloads/mysql/ MySQL]
+* [http://www.mysql.com/downloads/workbench/ MySQL Workbench]
+* [http://msysgit.github.io/ MSysGit]
+== GIT Clone ==
+'''''<big>Recommended to use Git Clone because [https://github.com/rathena/rathena rAthena] is up-to-date</big>'''''
+=== Git Only ===
+* Download and install [http://msysgit.github.io/ msysgit].
+* On installation, make sure '''Windows Explorer Integration''' option is checked, it will makes context menu and easier to open git command on desired folder.
+* Make a new folder '''rAthena''' then right-click it and choose '''Git Bash'''
+* Then do <code>git clone https://github.com/rathena/rathena.git</code>
+* Once it done, your local working copy is ready to use.
+
+=== TortoiseGit ===
+* Needs [http://git-scm.com/download/win msysgit] and [http://download.tortoisegit.org/tgit/ TortoiseGit] installed
+* Needs to point the git.exe path.
+** Right-click a folder
+** Choose '''TortoiseGit -> Settings'''
+** In '''General''' put <code>C:\Program Files\Git\bin</code> (default MSysGit path) in the '''''Git.exe Path'''''
+** Click '''OK'''.
+* Create a new folder '''rAthena''' then right-click it, '''Git Clone...'''
+** Put the URL <code>https://github.com/rathena/rathena.git</code>
+** Click '''OK'''.
+* Wait until the cloning process is done.
+
+== Compiling ==
+For compiling on Windows, Visual Studio is the preferred method, although using Cygwin is also possible.
+
+=== Using Visual Studio ===
+[[Image:Compile-rathena.PNG|thumb|300px|MS Visual Studio 2010: Compile configuration (<span style="color:red;">red</span>) and solution (<span style="color:blue;">blue</span>) with it's child projects.]]
+rAthena ships with solution and project files for Visual Studio from 9 onwards. Usage of both the paid and free (express) versions is same, although the paid one produces more efficient code [http://nn.nachtwolke.com/dev/ref/msvcperf.htm]. 
+* Download [http://www.microsoft.com/visualstudio/en-us/products/2010-editions/visual-cpp-express MS Visual C++ 2010 Express Edition] and install it, if you do not have Visual Studio/Visual C++ already installed.
+* Open '''rAthena-10.sln''' in your rAthena folder.
+* Select the desired compile configuration (marked <span style="color:red;">red</span>). Use '''Release''' when you compile the server, where players will be playing on. '''Debug''' compiles the server without optimizations and with debugging information.
+* Right-click the solution node (marked <span style="color:blue;">blue</span>) and select '''Build solution'''. If you have compiled the server before, it is recommended to use '''Rebuild solution''', as it forces the compiling of all components, not just those, which seem to have changed since last compile.
+* If the compilation was successful, the resulting executables are in the same folder as the solution named ''login-server_sql.exe'', ''char-server_sql.exe'', ''map-server_sql.exe'' and ''mapcache.exe''.
+
+=== Using Cygwin ===
+[http://www.cygwin.com/ Cygwin] is a Linux environment emulation for Windows. As such it enables compiling the way it would be done on Linux. Compiling in Cygwin is '''not recommended''' due to lower performance and increased installation complexity.
+
+* Download [http://www.cygwin.com/setup.exe Cygwin] and install it, if not already done so. When installing, select following packages:
+** from ''Devel'': ''cmake'', ''gcc'' and ''make'' 
+** from ''Lib'': ''libidn-devel'', ''libpcre-devel'', ''readline'', ''zlib-devel''
+* Running Cygwin Terminal will create folder <code>'''home/user'''</code> inside Cygwin installation folder, where ''user'' is the name currently logged on Windows user.
+* SQL server needs to be installed in Cygwin so the compiler can access the SQL libraries. Download the .tar.gz archive from the [http://dev.mysql.com/downloads/mysql/?current_os=src MySQL website], such as '''mysql-5.5.20.tar.gz'''.
+* Place the archive into <code>'''/home/user'''</code> and execute following inside Cygwin Terminal to unpack it:
+  cd ~
+  tar xvzf mysql-5.5.20.tar.gz
+* Navigate to directory with unpacked archive:
+  cd mysql-5.5.20
+* To avoid conficts, replace ''dtoa()'' with ''_dtoa()'' in ''strings/dtoa.c'' file:
+  sed -i 's/dtoa(/_dtoa(/g' ./strings/dtoa.c
+* Build MySQL with following commands:
+  cmake .
+  make mysqlclient libmysql
+  make install
+* After everything completes, Cygwin is ready for compiling rAthena. Navigate to the rAthena folder in Cygwin. Windows drives are accesible as <code>/cygdrive/x</code> where ''x'' is the letter assigned to the drive by Windows.
+* Execute following commands inside rAthena folder to compile it:
+  ./configure --with-mysql=/usr/local/mysql/bin/mysql_config
+  make sql
+* If the compilation was successful, the resulting executables are in the rAthena folder named ''login-server_sql.exe'', ''char-server_sql.exe'' and ''map-server_sql.exe''.
+* Server executables can be run inside Cygwin Terminal or directly, but in this case you need to copy required libraries to rAthena folder:
+** ''cygwin1.dll'', ''cygz.dll'', ''cyggcc_s-1.dll'', ''cygpcre-0.dll'' from <code>/bin</code>
+** ''cygmysqlclient-18.dll'' from <code>/usr/local/mysql/lib</code>
+
+== IP info ==
+Next let's get your IP info. 
+* Windows XP
+Click Start, then Run... type ''cmd'' and click OK.
+Type in ''ipconfig'' and press the Enter key.
+You should see something like this:
+ Ethernet adapter Local Area Connection
+ 
+ Media State . . . . . . . . . . . : Media disconnected
+ 
+ Ethernet adapter Wireless Network Connection
+ 
+ Connection-specific DNS Suffix  . 
+ IP Address. . . . . . . . . . . . : 192.xxx.x.x
+ Subnet Mask . . . . . . . . . . . : 255.255.255.0
+ Default Gateway . . . . . . . . . : 192.xxx.x.x
+* Windows 7
+Click Start and in the search box type ''run'' then type ''cmd'' and press then Enter key.
+Type in ''ipconfig'' and press the Enter key.
+ Windows IP Configuration
+ 
+ 
+ Wireless LAN adapter Wireless Network Connection:
+ 
+    Connection-specific DNS Suffix  . :
+    Link-local IPv6 Address . . . . . : Gibberish
+    IPv4 Address. . . . . . . . . . . : 192.xxx.x.xx < Your IP! (LAN IP)
+    Subnet Mask . . . . . . . . . . . : 255.255.255.0
+    Default Gateway . . . . . . . . . : 192.xxx.x.x
+ 
+ Ethernet adapter Local Area Connection:
+ 
+    Media State . . . . . . . . . . . : Media disconnected
+    Connection-specific DNS Suffix  . :
+In place of the x there will be numbers. Open notepad; go back to the console window and right-click it's window title and select option "Select..." then click and drag over your IP address (selection will appear in inverted colors), or just copy the whole thing. For Windows 7 you will need to right click the window with the text, and click mark; then click and drag. This IP address is known as your LAN IP. Next go to [http://www.whatismyip.net/ whatismyip.net] and take note of your IP address from there. This is your WAN IP, just for future reference to make it world-wide.
+
+== Conf Folder ==
+Open char_athena.conf and map_athena.conf with notepad, wordpad, or your text editor of choice. If your LAN IP and WAN IP are same then put that one IP down for all of the IP locations. Char_athena: ''login_ip'' will be the LAN IP, ''char_ip'' will be WAN IP. Change ''server_name'' to the name you want your server to be. You can change ''wisp_server_name'' to what you would like it to be. ''wisp_server_name'' is the name that shows up when a character logs in and receives a PM about it being night. The rest of things that can be changed here will be explained later. Map_athena: ''char_ip'' is the LAN IP, ''map_ip'' is the WAN IP. Be sure to remove the // before each IP line. When you are done, it should look like this:
+ // Character Server IP
+ // The map server connects to the character server using this IP address.
+ // NOTE: This is useful when you are running behind a firewall or are on
+ // a machine with multiple interfaces.
+ char_ip: 192.xxx.x.x < LAN IP
+ 
+ // The map server listens on the interface with this IP address.
+ // NOTE: This allows you to run multiple servers on multiple interfaces
+ // while using the same ports for each server.
+ //bind_ip: 127.0.0.1
+ 
+ // Character Server Port
+ char_port: 6121
+ 
+ // Map Server IP
+ // The IP address which clients will use to connect.
+ // Set this to what your server's public IP address is.
+ map_ip: 69.xxx.x.x < WAN IP
+Rename the import-tmpl folder to import. Leave the conf folder back to the main folder and rename save-tmpl to save.
+
+= After Installation =
+After you have finished configuring at this point, you will need to setup the [[SQL_Installation|MySQL server]] that rAthena requires.
+<br /><br />
+Once you have completed setting up your server, you may want to look at [[Configuration]] and [[Customization]].
+
+= See Also =
+*[[SQL_Installation#For_Windows|SQL Installation]]
+*[[clientinfo.xml]]
+*[[Custom Items]]
+*[[Custom Mobs]]
+*[[GIT_Troubleshooting]]
