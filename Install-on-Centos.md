@@ -158,7 +158,7 @@ In the future (after you update or edit any file in /src) to recompile, add ''ma
 
 # Start your rAthena Server
 * Change access mode of athena-start file so that you can execute it.
-* Use (dos2unix athena-start) if yo uare getting ^M errors ie. newline errors 
+* Use (dos2unix athena-start) if you are getting ^M errors, ie. newline errors 
 
  `chmod a+x athena-start`
 
