@@ -10,9 +10,9 @@ Penalty
 
 Along with EXP death penalties, a Zeny penalty may be set in which reduced the amount of Zeny the player holds upon death:
 
-`// When a player dies (to another player), how much zeny should we penalize them with?`
-`// NOTE: It is a percentage of their zeny, so 100 = 1%`
-`zeny_penalty: 0`
+    // When a player dies (to another player), how much zeny should we penalize them with?
+    // NOTE: It is a percentage of their zeny, so 100 = 1%
+    zeny_penalty: 0
 
 [Mapflags](Mapflag) can be set on certain maps to disable the zeny penalty in.
 
@@ -28,6 +28,6 @@ Scripting
 
 The name *Zeny* is recognized by the script engine as a [parameter constant](parameter-constant), which affects the amount of Zeny of the [currently attached](RID) player. It can be both read and written.
 
-  [set](set) Zeny,Zeny+120;  // gives the player 120z
-  [mes](mes) "Your current balance is "+Zeny+"z.";
-  [set](set) Zeny,0;  // takes all Zeny from the player
+    set Zeny,Zeny+120;  // gives the player 120z
+    mes "Your current balance is "+Zeny+"z.";
+    set Zeny,0;  // takes all Zeny from the player
