@@ -2,7 +2,7 @@
 
 rAthena is an [open-source](http://en.wikipedia.org/wiki/Open_source) project, emulating a [Ragnarok Online](http://en.wikipedia.org/wiki/Ragnarok_Online) [Server](http://en.wikipedia.org/wiki/Server). It is written in programming language C and is version controlled via Git.
 
-rAthena runs on most common [Operating Systems](http://en.wikipedia.org/wiki/Operating_system). For a full list, please see the [System Requirements](https://github.com/rathena/rathena/wiki/System-Requirements).
+rAthena runs on most common [Operating Systems](http://en.wikipedia.org/wiki/Operating_system). For a full list, please see the [System Requirements](System-Requirements).
 
 [Help & Support](http://rathena.org/board/forum/3-support-releases/) 
 
