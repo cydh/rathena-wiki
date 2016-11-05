@@ -1,8 +1,3 @@
----
-title: Compiling
-permalink: /Compiling/
----
-
 Unix
 ----
 
@@ -105,5 +100,3 @@ You'll see nice green output progression then finally login-server, map-server, 
 
 Windows
 -------
-
-[Category:Installation](/Category:Installation "wikilink")
