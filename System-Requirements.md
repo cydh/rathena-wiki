@@ -1,7 +1,3 @@
----
-title: System Requirements
-permalink: /System_Requirements/
----
 
 Basic Requirements
 ------------------
