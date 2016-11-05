@@ -1,8 +1,3 @@
----
-title: Connecting
-permalink: /Connecting/
----
-
 This article covers taking the configuration steps to ensure a successful connection to your servers. You are required to know the in and outs of your OS, as well as what a [LAN IP](/wikipedia:Local_area_network "wikilink") and a [WAN IP](/wikipedia:Wide_area_network "wikilink") are.
 
 Basics of the three servers
