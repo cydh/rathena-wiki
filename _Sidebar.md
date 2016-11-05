@@ -8,11 +8,11 @@
 ## Configure your Server
 * [Scripting](scripting) like a pro!
 * Server [Modifications](modifications) and what to expect
-* [Database configuration](databaseconfigs)
+* [Database Configuration](Database-Configuration)
 * [Customize](customizing) your server!
 
 ## Setup the Client
-* [Data folder](data_folder)
+* [Data folder](Data-Folder)
 * [Spriting](spriting), pixel by pixel
 * [Mapping](mapping) tutorials
 * [Client Configs](diff) make you original
