@@ -14,12 +14,12 @@ rAthena runs on most common [Operating Systems](http://en.wikipedia.org/wiki/Ope
 
 ## Configure your Server
 * [Scripting](scripting) like a pro!
-* Server [Modifications](modifications) and what to expect
-* [Database configuration](databaseconfigs)
+* Server [Modifications](Server_Modifications) and what to expect
+* [Database configuration](Ddatabase-Configuration)
 * [Customize](customizing) your server!
 
 ## Setup the Client
-* [Data folder](data_folder)
+* [Data folder](Data-Folder)
 * [Spriting](spriting), pixel by pixel
 * [Mapping](mapping) tutorials
 * [Client Configs](diff) make you original
