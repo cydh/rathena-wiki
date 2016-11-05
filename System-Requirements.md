@@ -48,5 +48,3 @@ The following operating systems have been tested and are known to work:
 -   Home Versions: Windows 98, Windows ME, Windows 2000, Windows XP, Windows Vista, Windows 7
 
 64-bit operating systems of all those listed will take some time and effort to get working.
-
-[Category:Basics](/Category:Basics "wikilink")
